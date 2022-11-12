@@ -4,7 +4,11 @@ Public Class MainForm
 
     Dim sourceFolderPath
 
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Select_Target_Dir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Select_Target_Dir.Click
         FolderBrowserDialog1.ShowDialog()
         sourceFolderPath = FolderBrowserDialog1.SelectedPath
@@ -28,10 +32,21 @@ Public Class MainForm
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' Open directory
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Open_Target_Dir(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Open_Target_Dir.Click
         Process.Start("explorer.exe", sourceFolderPath)
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Button_SelectAllOrNothing_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_SelectAllOrNothing.Click
         If CheckedListBox1.CheckedItems.Count = 0 Then
             For i As Integer = 0 To CheckedListBox1.Items.Count - 1
@@ -44,12 +59,16 @@ Public Class MainForm
         End If
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Button_ZipStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_ZipStart.Click
 
         Dim itemChecked As String
         Dim numCheck As Integer = CheckedListBox1.CheckedItems.Count
         Dim currentProgress As Integer = 0
-
 
         If numCheck = 0 Then
             Label1.Text = "There is nothing to zip"
@@ -70,9 +89,5 @@ Public Class MainForm
             Label1.Text = "They have been successfully zipped."
 
         End If
-    End Sub
-
-    Private Sub LinkLabel_FeedBack_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_FeedBack.LinkClicked
-        System.Diagnostics.Process.Start("mailto:" + "jin828sin@hotmail.com")
     End Sub
 End Class
